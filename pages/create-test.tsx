@@ -1,15 +1,11 @@
-import { Inter } from "next/font/google";
+import TestForm from "@/features/tests/components/TestForm/TestForm";
 import WithPrivate from "@/features/users/components/WithPrivate/WithPrivate";
 
-const inter = Inter({ subsets: ["latin"] });
-
-export default function Home() {
+function CreateTest() {
     return (
         <WithPrivate>
-            Home
+            <TestForm />
         </WithPrivate>
     );
 }
-
-
-
+export default CreateTest;

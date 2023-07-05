@@ -1,0 +1,101 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider     = "mysql"
+  url          = env("DATABASE_URL")
+  relationMode = "prisma"
+}
+
+model Test {
+  id              Int        @id @default(autoincrement())
+  testName        String
+  questions       Question[]
+  totalTestPoints Int
+  createdAt       DateTime   @default(now())
+  updatedAt       DateTime   @updatedAt
+  userId          Int
+  user            User       @relation(fields: [userId], references: [id])
+
+  @@index([userId])
+}
+
+model TestResponse {
+  id               Int                @id @default(autoincrement())
+  testId           Int
+  userId           Int
+  studentId        Int
+  studentEmail     String
+  result           Int 
+  responseQuestion ResponseQuestion[]
+}
+
+model ResponseQuestion {
+  id             Int              @id @default(autoincrement())
+  responseAnswer ResponseAnswer[]
+  testResponse   TestResponse     @relation(fields: [testResponseId], references: [id])
+  testResponseId Int
+  questionId     Int
+  question       String
+  questionPoints Int             
+
+  @@index([testResponseId])
+}
+
+model ResponseAnswer {
+  id         Int              @id @default(autoincrement())
+  answerId   Int
+  response   ResponseQuestion @relation(fields: [responseId], references: [id])
+  responseId Int
+  answer     String
+  isChosen   Boolean
+
+  @@index([responseId])
+}
+
+model Question {
+  id                        Int      @id @default(autoincrement())
+  question                  String
+  answers                   Answer[]
+  areMultipleAnswersAllowed Boolean
+  questionPoints            Int
+  createdAt                 DateTime @default(now())
+  updatedAt                 DateTime @updatedAt
+  test                      Test?    @relation(fields: [testId], references: [id])
+  testId                    Int?
+
+  @@index([testId])
+}
+
+model Answer {
+  id         Int       @id @default(autoincrement())
+  answer     String
+  isCorrect  Boolean
+  createdAt  DateTime  @default(now())
+  updatedAt  DateTime  @updatedAt
+  question   Question? @relation(fields: [questionId], references: [id])
+  questionId Int?
+
+  @@index([questionId])
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  password  Password?
+  name      String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  tests     Test[]
+}
+
+model Password {
+  id     Int    @id @default(autoincrement())
+  hash   String
+  userId Int    @unique
+  user   User   @relation(fields: [userId], references: [id])
+}
