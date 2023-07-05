@@ -40,7 +40,7 @@ function AuthProvider(props: AuthProviderProps) {
 
     return (
         <AuthContext.Provider value={value}>
-            {value.isLoading ? <Spinner /> : props.children}
+            {value.isLoading ? <Spinner size="lg" /> : props.children}
         </AuthContext.Provider>
     );
 }
