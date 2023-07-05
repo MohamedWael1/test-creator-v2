@@ -45,7 +45,7 @@ const swap = (arr: Question[], index1: number, index2: number) => {
 function reducer(state: Test, action: TestActions): Test {
     switch (action.type) {
         case "add_question": {
-            const questions = state.questions;
+            const questions = state.questions as Question[];
             return {
                 ...state,
                 questions: [
@@ -74,7 +74,7 @@ function reducer(state: Test, action: TestActions): Test {
         case "delete_question": {
             const questions = state.questions;
             return {
-                ...state, questions: questions.filter((question, i) => i !== action.payload)
+                ...state, questions: questions?.filter((question, i) => i !== action.payload) 
             }
 
         }
@@ -94,7 +94,7 @@ function reducer(state: Test, action: TestActions): Test {
             const questions = state.questions;
             return {
                 ...state,
-                questions: questions.map((question, i) => {
+                questions: questions?.map((question, i) => {
                     if (i === action.payload.questionIndex) {
                         return {
                             ...question,
@@ -110,7 +110,7 @@ function reducer(state: Test, action: TestActions): Test {
         }
 
         case "handle_sort_change": {
-            const questions = [...state.questions];
+            const questions = [...state.questions as Question[]] ;
             const questionIndex = questions.findIndex(q => q.id === action.payload.questionId);
             swap(questions, questionIndex, questionIndex + action.payload.indexIncrement);
 
