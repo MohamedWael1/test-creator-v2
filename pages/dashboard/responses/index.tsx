@@ -37,8 +37,8 @@ function Responses() {
                                 </TableRow>
                             </TableHeader>
                             <TableBody className="font-semibold">
-                                {responses?.map((res) => (
-                                    <TableRow>
+                                {responses?.map((res,index) => (
+                                    <TableRow key={index}>
                                         <TableCell>{res.testId}</TableCell>
                                         <TableCell>{res.studentId}</TableCell>
                                         <TableCell>
