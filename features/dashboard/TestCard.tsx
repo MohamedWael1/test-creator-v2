@@ -11,7 +11,7 @@ function TestCard(props: TestCardProps) {
     const { mutate, isLoading: isDeleting } = useDeleteTest();
 
     const numberOfQuestionsInTest = (): number => {
-        return props.questions?.length;
+        return props.questions?.length as number;
     };
     return (
         <div
