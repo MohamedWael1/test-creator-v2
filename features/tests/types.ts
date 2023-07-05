@@ -1,7 +1,7 @@
 export interface Test {
-    testName: string;
-    totalTestPoints: number;
-    questions: Question[];
+    testName?: string;
+    totalTestPoints?: number;
+    questions?: Question[];
     id?: number;
     userId?: number;
 }

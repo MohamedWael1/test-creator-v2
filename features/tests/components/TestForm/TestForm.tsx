@@ -72,7 +72,7 @@ function TestForm(props: Test) {
                         {index + 1}.
                         <QuestionForm
                             isMoveQuestionDownArrowHidden={
-                                index === test.questions?.length - 1
+                                index === test.questions?.length as number - 1
                             }
                             isMoveQuestionUpArrowHidden={index === 0}
                             id={question.id}
