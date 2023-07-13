@@ -6,10 +6,11 @@ generator client {
 }
 
 datasource db {
-  provider     = "mysql"
-  url          = env("mysql://e4dv5n9w2h2220j7sg56:pscale_pw_jyNTqQmf9okhXIVi8YED161d0JW7KLmSGeq2ZlNfCcW@aws.connect.psdb.cloud/test-creator?sslaccept=strict")
+  provider = "mysql"
+  url = env("DATABASE_URL")
   relationMode = "prisma"
 }
+
 
 model Test {
   id              Int        @id @default(autoincrement())
