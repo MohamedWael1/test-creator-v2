@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider     = "mysql"
-  url          = env("DATABASE_URL")
+  url          = env("mysql://e4dv5n9w2h2220j7sg56:pscale_pw_jyNTqQmf9okhXIVi8YED161d0JW7KLmSGeq2ZlNfCcW@aws.connect.psdb.cloud/test-creator?sslaccept=strict")
   relationMode = "prisma"
 }
 
