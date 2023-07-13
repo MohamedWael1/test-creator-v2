@@ -53,6 +53,7 @@ function TestForm(props: Test) {
                         aria-label="Test Title"
                         value={test.testName}
                         onChange={(e) => {
+                            console.log(e);
                             const target = e.target as HTMLInputElement;
                             dispatch({
                                 type: "handle_test_name_change",
@@ -72,7 +73,7 @@ function TestForm(props: Test) {
                         {index + 1}.
                         <QuestionForm
                             isMoveQuestionDownArrowHidden={
-                                index === test.questions?.length as number - 1
+                                index === (test.questions?.length as number) - 1
                             }
                             isMoveQuestionUpArrowHidden={index === 0}
                             id={question.id}

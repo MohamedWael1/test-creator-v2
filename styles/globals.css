@@ -4,6 +4,7 @@
 
 body {
     background-color: #f1f5f9;
+  
 }
 
 @layer base {
@@ -14,6 +15,9 @@ body {
         --primary-600: #6366f1;
         --danger-600: #dc2626;
         --danger-500: #ef4444;
+
+
+       
 
         --background: 0 0% 100%;
         --foreground: 222.2 47.4% 11.2%;
@@ -80,4 +84,5 @@ body {
         --radius: 0.5rem;
     }
 }
+
 

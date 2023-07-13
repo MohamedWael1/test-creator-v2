@@ -23,7 +23,7 @@ function Responses() {
                 {isLoading ? (
                     <Spinner size="lg" />
                 ) : (
-                    <div className="max-w-2xl my-20 mx-auto ">
+                    <div className="max-w-2xl my-10 mx-auto ">
                         <Table className="text-primary-text ">
                             <TableCaption className="font-bold">
                                 Responses
