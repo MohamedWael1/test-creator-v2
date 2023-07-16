@@ -4,10 +4,6 @@ import { useRouter } from "next/router";
 
 const NAV_LINKS = [
     {
-        name: "Home",
-        path: "/",
-    },
-    {
         name: "Dashboard",
         path: `/dashboard/tests`,
     },
