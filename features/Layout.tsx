@@ -1,6 +1,8 @@
 import clsx from "clsx";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import { useAuth } from "./users/components/AuthProvider";
+import auth from "@/lib/auth";
 
 const NAV_LINKS = [
     {
@@ -72,6 +74,7 @@ function DashboardNav() {
 
 function Navbar() {
     const { pathname } = useRouter();
+    const logout = auth.logout();
     return (
         <nav className="bg-white border-2 border-gray-200 rounded-full min-h-[40px] text-gray-500 z-10 max-w-lg font-semibold w-full mx-auto ">
             <ul className="flex justify-center">
@@ -88,6 +91,9 @@ function Navbar() {
                         </Link>
                     </li>
                 ))}
+                <li onClick={() => logout}>
+                    Logout
+                </li>
             </ul>
         </nav>
     );

@@ -13,7 +13,7 @@ export default function Home() {
         const interval = setInterval(() => {
             const elem = ref.current;
             if (!elem) return;
-            elem.style.background = `linear-gradient(${angle}deg, #fc00ff, #00dbde)`;
+            elem.style.border = `linear-gradient(${angle}deg, #fc00ff, #00dbde)`;
             angle = angle + 1;
         }, 1000/60);
         return () => clearInterval(interval);
